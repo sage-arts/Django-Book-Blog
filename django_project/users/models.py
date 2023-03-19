@@ -9,11 +9,13 @@ class Profile(models.Model):
         ('mystery', 'Mystery'),
         ('romance', 'Romance'),
         ('fantasy', 'Fantasy'),
-        ('other', 'Other'),
+        ('adventure', 'Adventure'),
+        ('horror', 'Horror'),
+        ('dystopian', 'Dystopian'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    genre_interests = MultiSelectField(choices=GENRE_CHOICES, max_choices=4, max_length=15)
+    genre_interests = MultiSelectField(choices=GENRE_CHOICES, max_choices=4, max_length=40)
     bio = models.TextField()
 
     def __str__(self):
